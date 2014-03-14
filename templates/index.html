@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="jumbotron" id="content">
+     <p>&nbsp;</p>
+     <form class="form-signin">
+          <span class="label">Search for:</span>
+          <input type="textbox" name="aword" class="form-control" {%if w and w!=""%}value="{{w}}" {%endif%}>
+          <button class="btn btn-large btn-primary" type="submit">Go</button>
+          
+     </form>
+</div>     
+
+<div class="row" id="main">
+     <div style="float: left; width: 300px; margin-right: 10px; overflow-x: scroll;">
+          <h4>Results:</h4>
+          {% if cat and cat!= [] %}Found in: 
+               {% for c in cat %}
+                    {{c}}
+               {%endfor%}
+          {%endif%}
+          {% if urls and urls!=[] %} 
+               <ul>
+               {% for url in urls %}
+                    <li><a href="{{url[0]}}">{{url[0]}}</a></li>
+               {%endfor%}
+               </ul>
+          {%endif%}
+     </div>
+     <div style="float: left; width: 400px; margin-right: 10px">
+          <h4>Other match(es):</h4>
+          {% if w and w!="" %}
+               {%if s!=[] and s!=[w]%}
+                    From query:
+                    {% for token in s%}
+                         {%if token!="the" and token!="The" and token!="in"%}
+                              <a href="?aword={{token}}">{{token}}</a>
+                         {%endif%}
+                    {%endfor%} 
+               {%endif%} 
+               <br>From same url(s): 
+               {%if m and m!=[]%}  
+                    {% for match in m %}
+                         <a href="?aword={{match}}">{{match}}</a>,
+                    {%endfor%}
+               {%endif%}     
+          {%endif%}
+     </div>
+     <div class="col-lg-4">&nbsp;</div>
+</div>
+<div class="footer" id="main" align="center"><hr>Copyright ServerCode Ltd 2014
+</div>
+{% endblock %}

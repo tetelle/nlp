@@ -1,0 +1,42 @@
+create table Things(
+thing_id int not null auto_increment primary key,
+thing_name varchar(50) not null,
+thing_date timestamp,
+thing_url varchar(255),
+thing_freq int,
+thing_prob double
+)
+
+create table Organisations(
+organisation_id int not null auto_increment primary key,
+organisation_name varchar(50) not null,
+organisation_date timestamp,
+organisation_url varchar(255),
+organisation_freq int,
+organisation_prob double
+)
+
+create table People(
+people_id int not null auto_increment primary key,
+people_name varchar(50) not null,
+people_date timestamp,
+people_url varchar(255),
+people_freq int,
+people_prob double
+)
+
+create table Places(
+place_id int not null auto_increment primary key,
+place_name varchar(50) not null,
+place_date timestamp,
+place_url varchar(255),
+place_freq int,
+place_prob double
+)
+
+
+def get_things(url):
+	pass
+
+def get_urls(thing):
+	pass
